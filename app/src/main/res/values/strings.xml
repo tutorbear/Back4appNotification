@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Back4appNotification</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">cgdUl1gzRL9bTRdsHNnu8pOipk5zZAf13XsS0mYi</string>
+    <string name="back4app_client_key">RcmgiIyKwSfbCA2NAb3JBRYJVz58TWpWebzeAcqR</string>
+
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1091329126855",
+    "firebase_url": "https://back4appnotification-ac158.firebaseio.com",
+    "project_id": "back4appnotification-ac158",
+    "storage_bucket": "back4appnotification-ac158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091329126855:android:b35378dfc633746d91a9e2",
+        "android_client_info": {
+          "package_name": "com.example.back4appnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091329126855-21a7n8n135kbu97vov7q8jn7lq9q1aju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.back4appnotification",
+            "certificate_hash": "70390a613f6861fb172bf7beae2fe25f3c14a163"
+          }
+        },
+        {
+          "client_id": "1091329126855-j7h53jic2t3sn99gihtivb6vlblc2e9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFUzlBVr_WnMIWxrwoks2Ik8LtllFbhHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091329126855-j7h53jic2t3sn99gihtivb6vlblc2e9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
