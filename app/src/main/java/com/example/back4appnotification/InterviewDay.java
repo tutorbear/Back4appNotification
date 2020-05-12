@@ -19,6 +19,8 @@ import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -236,6 +238,12 @@ public class InterviewDay extends AppCompatActivity {
                 }
             }
             obj.put("hired",temp);
+
+            //Payment date
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DAY_OF_MONTH,1);
+            Date paymentDate = cal.getTime();
+            obj.put("paymentDate",paymentDate);
 
             //removing from Requested
             ArrayList<ParseObject> removeObject = new ArrayList<>();

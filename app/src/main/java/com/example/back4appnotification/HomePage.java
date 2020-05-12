@@ -20,6 +20,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,7 +44,6 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
 
     public void lockedJobs(View view) {
         startActivity(new Intent(this,LockedJobsList.class));
-
     }
 
 
@@ -108,4 +108,8 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
         });
     }
 
+
+    public void paymentDue(View view) {
+        startActivity(new Intent(this,PaymentOverdueList.class));
+    }
 }
