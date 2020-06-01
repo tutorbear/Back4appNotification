@@ -156,7 +156,7 @@
 
 
                 <Button
-                    android:id="@+id/t1SetTime"
+                    android:id="@+id/ban"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -172,53 +172,24 @@
                 android:orientation="horizontal"
                 android:weightSum="4">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/t2N"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="t2"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/t2N"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="t2"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/t2U"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="t2"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
-                </LinearLayout>
 
                 <Button
-                    android:id="@+id/t2SetTime"
+                    android:id="@+id/t2Hire"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="timeSetter"
-                    android:text="Set Time" />
+                    android:layout_weight="3"
+                    android:onClick="hire"
+                    android:text="HIRE" />
 
-                <Button
-                    android:id="@+id/t2No"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="notGoing"
-                    android:text="NO" />
-
-                <Button
-                    android:id="@+id/t2Call"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Call"
-                    android:onClick="callT"/>
 
 
             </LinearLayout>
@@ -242,53 +213,23 @@
                 android:orientation="horizontal"
                 android:weightSum="4">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
                     <TextView
                         android:id="@+id/t3N"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="t3"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/t3U"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="t3"
                         android:textAlignment="center"
                         android:textStyle="bold" />
-                </LinearLayout>
 
                 <Button
-                    android:id="@+id/t3SetTime"
+                    android:id="@+id/t3Hire"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="timeSetter"
-                    android:text="Set Time" />
+                    android:layout_weight="3"
+                    android:onClick="hire"
+                    android:text="Hire" />
 
-                <Button
-                    android:id="@+id/t3No"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="notGoing"
-                    android:text="NO" />
-
-                <Button
-                    android:id="@+id/t3Call"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Call"
-                    android:onClick="callT"/>
 
 
             </LinearLayout>
@@ -333,7 +274,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Submit"
+                    android:text="Delete"
                     android:onClick="submit"
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>

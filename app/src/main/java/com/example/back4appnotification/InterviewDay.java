@@ -195,7 +195,6 @@ public class InterviewDay extends AppCompatActivity {
     }
 
     public void hire(View view) {
-
         if (view.getId()==R.id.t1Hire){
             h2.setEnabled(false);
             h3.setEnabled(false);
@@ -206,7 +205,6 @@ public class InterviewDay extends AppCompatActivity {
             h1.setEnabled(false);
             h2.setEnabled(false);
         }
-
     }
 
     public void callP(View view) {
@@ -242,6 +240,7 @@ public class InterviewDay extends AppCompatActivity {
             //Payment date
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.DAY_OF_MONTH,1);
+            cal.set(Calendar.HOUR_OF_DAY, 8);
             Date paymentDate = cal.getTime();
             obj.put("paymentDate",paymentDate);
 
@@ -259,6 +258,8 @@ public class InterviewDay extends AppCompatActivity {
                     }
                 }
             });
+
+            //Todo : Remove time array as well
         }
     }
 }

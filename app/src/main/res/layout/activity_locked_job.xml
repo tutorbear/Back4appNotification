@@ -116,7 +116,6 @@
                     android:text="address"
                     android:textAlignment="center"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
 

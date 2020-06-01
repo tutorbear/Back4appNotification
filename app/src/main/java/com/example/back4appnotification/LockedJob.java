@@ -57,6 +57,7 @@ public class LockedJob extends AppCompatActivity implements DatePickerDialog.OnD
         sub = findViewById(R.id.subjectJP);
         curr = findViewById(R.id.curriculumJP);
         address = findViewById(R.id.addressJP);
+
         //Teacher
         t1N = findViewById(R.id.t1N);
         t1U = findViewById(R.id.t1U);

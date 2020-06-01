@@ -35,7 +35,10 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
     }
 
     public void verT(View view) {
+//        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, VerT.class));
+
+
     }
 
     public void verS(View view) {
@@ -111,5 +114,9 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
 
     public void paymentDue(View view) {
         startActivity(new Intent(this,PaymentOverdueList.class));
+    }
+
+    public void paidJobs(View view) {
+
     }
 }

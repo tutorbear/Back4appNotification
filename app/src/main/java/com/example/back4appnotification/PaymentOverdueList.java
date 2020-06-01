@@ -33,7 +33,6 @@ public class PaymentOverdueList extends AppCompatActivity {
         setContentView(R.layout.activity_payment_overdue_list);
         init();
         query();
-
     }
 
     private void init() {
@@ -43,14 +42,17 @@ public class PaymentOverdueList extends AppCompatActivity {
 
     private void query() {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
+        cal.set(Calendar.HOUR_OF_DAY, 1);
+        cal.set(Calendar.MINUTE, 1);
+        cal.set(Calendar.SECOND, 1);
+        cal.set(Calendar.MILLISECOND, 1);
         Date today = cal.getTime();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("JobBoard");
         query.whereLessThan("paymentDate", today);
+        query.include("createdBy.sProfile");
+        query.include("hired");
+        query.include("requested");
         Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
