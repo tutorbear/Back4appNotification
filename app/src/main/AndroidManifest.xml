@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
 
     <application
         android:name=".App"
@@ -18,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PaidJobsList"></activity>
+        <activity android:name=".PaidJobsList" />
         <activity android:name=".PaymentOverdueList" />
         <activity android:name=".PaymentOverdue" />
         <activity android:name=".InterviewDay" />

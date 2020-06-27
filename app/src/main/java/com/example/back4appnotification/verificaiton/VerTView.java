@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.back4appnotification.R;
 import com.parse.ParseObject;
 

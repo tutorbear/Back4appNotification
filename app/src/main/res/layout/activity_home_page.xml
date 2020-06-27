@@ -21,32 +21,33 @@
         android:id="@+id/stuT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
         android:onClick="verS"
         android:text="Student Verificaiton"
-        app:layout_constraintStart_toStartOf="@+id/verT"
-        app:layout_constraintTop_toBottomOf="@+id/verT" />
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/verT" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="33dp"
         android:onClick="logout"
         android:text="Logout"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="12dp"
         android:onClick="lockedJobs"
         android:text="Locked Jobs"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintStart_toStartOf="@+id/button8" />
 
     <TextView
         android:id="@+id/textView2"
@@ -61,31 +62,21 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="25dp"
         android:onClick="interview"
         android:text="Interveiw date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintEnd_toEndOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="211dp"
+        android:layout_marginEnd="6dp"
         android:onClick="paymentDue"
         android:text="Payment Overdue"
-        app:layout_constraintStart_toStartOf="@+id/stuT"
-        app:layout_constraintTop_toBottomOf="@+id/stuT" />
+        app:layout_constraintEnd_toEndOf="@+id/stuT"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="10dp"
-        android:text="Paid Jobs"
-        android:onClick="paidJobs"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

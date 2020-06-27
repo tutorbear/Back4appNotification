@@ -53,7 +53,6 @@ public class PaymentOverdueList extends AppCompatActivity {
         query.include("createdBy.sProfile");
         query.include("hired");
         query.include("requested");
-        Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {

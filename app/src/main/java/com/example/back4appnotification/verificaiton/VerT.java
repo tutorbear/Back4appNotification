@@ -1,6 +1,7 @@
 package com.example.back4appnotification.verificaiton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class VerT extends AppCompatActivity {
 
-    VerSAdapter customAdapter;
+    VerTAdapter customAdapter;
     LinearLayoutManager manager;
     RecyclerView recycle;
     List<ParseObject> obj;
@@ -52,7 +53,7 @@ public class VerT extends AppCompatActivity {
                         Toast.makeText(VerT.this, "Nothing found", Toast.LENGTH_SHORT).show();
                     }else{
                         obj = objects;
-                        customAdapter = new VerSAdapter(VerT.this, objects);
+                        customAdapter = new VerTAdapter(VerT.this, objects);
                         recycle.setAdapter(customAdapter);
                         recycle.setLayoutManager(manager);
                     }
@@ -67,7 +68,18 @@ public class VerT extends AppCompatActivity {
 
     public void viewT(View view) {
         int pos = (int) view.getTag();
-        startActivity(new Intent(this,VerTView.class).putExtra("obj",obj.get(pos)));
+        startActivityForResult(new Intent(this,VerTView.class).putExtra("obj",obj.get(pos)),1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==RESULT_OK){
+            int removeIndex = data.getIntExtra("pos",100);
+            obj.remove(removeIndex);
+            customAdapter.notifyItemRemoved(removeIndex);
+            customAdapter.notifyItemRangeChanged(removeIndex, obj.size());
+        }
     }
 }
 

@@ -37,8 +37,6 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
     public void verT(View view) {
 //        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, VerT.class));
-
-
     }
 
     public void verS(View view) {
