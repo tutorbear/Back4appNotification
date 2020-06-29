@@ -5,13 +5,200 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".verificaiton.VerT">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/verT_recycle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/nameTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/usernameTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/genderTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="gender"
+                android:textAlignment="center"/>
+
+
+            <ProgressBar
+                android:id="@+id/proPicBarTP"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile Picture"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:id="@+id/proPicTP"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                tools:srcCompat="@tools:sample/avatars[0]"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NID or Passport Pic"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:id="@+id/nIdTP"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                tools:srcCompat="@tools:sample/avatars[0]" />
+
+            <TextView
+                android:id="@+id/cEduTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="current Education"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/curriculumTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Curriculum"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/backgroundTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Background"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/schoolNameTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="School Name"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Certificate Pic"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:id="@+id/certificateTP"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                tools:srcCompat="@tools:sample/avatars[1]" />
+
+            <LinearLayout
+                android:id="@+id/uniDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/uniNameTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Uni Name"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/uniProgramTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Uni Program"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="University ID"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
+                <ImageView
+                    android:id="@+id/idCardTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    tools:srcCompat="@tools:sample/avatars[0]" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/addressTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/phoneTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Reject"
+                    android:onClick="rejectT"/>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Call"
+                    android:onClick="callT"/>
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Approve"
+                    android:onClick="verifyT"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

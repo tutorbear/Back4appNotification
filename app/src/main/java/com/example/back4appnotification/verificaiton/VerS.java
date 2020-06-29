@@ -1,115 +1,107 @@
 package com.example.back4appnotification.verificaiton;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.back4appnotification.R;
-import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import java.util.List;
+import com.parse.ProgressCallback;
 
 public class VerS extends AppCompatActivity {
-
-    VerSAdapter customAdapter;
-    LinearLayoutManager manager;
-    RecyclerView recycle;
-    List<ParseObject> obj;
+    TextView gName,relation;
+    ImageView gNId,idCardS;
+    ProgressBar progress;
+    ParseObject obj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver_s);
+        setContentView(R.layout.activity_ver_s_view);
         init();
-        query();
-    }
-    private void init() {
-        recycle = findViewById(R.id.verS_recycle);
-        manager = new LinearLayoutManager(this);
+        set();
     }
 
-    private void query() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("StudentProfile");
-        query.whereEqualTo("verified",false);
-        query.findInBackground(new FindCallback<ParseObject>() {
+    private void set() {
+        // Text Views
+        gName.setText("Guardians Name: "+obj.getString("guardianName"));
+        relation.setText("Relation: "+obj.getString("relation"));
+
+        //Images
+        ParseFile gNIdFile = obj.getParseFile("nId");
+        gNIdFile.getDataInBackground(new GetDataCallback() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if(e==null){
-                    if (objects.size()==0){
-                        Toast.makeText(VerS.this, "Nothing found", Toast.LENGTH_SHORT).show();
-                    }else{
-                        obj = objects;
-                        customAdapter = new VerSAdapter(VerS.this, objects);
-                        recycle.setAdapter(customAdapter);
-                        recycle.setLayoutManager(manager);
-                    }
-                }else{
-                    Toast.makeText(VerS.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            public void done(byte[] data, ParseException e) {
+                if (e==null){
+                    Glide.with(VerS.this)
+                            .load(data)
+                            .into(gNId);
+                }
+            }
+        });
+
+        ParseFile idCard = obj.getParseFile("studentId");
+        idCard.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if (e==null){
+                    Glide.with(VerS.this)
+                            .load(data)
+                            .into(idCardS);
+
+                }
+            }
+        }, new ProgressCallback() {
+            public void done(Integer percentDone) {
+                progress.setProgress(percentDone);
+                if (percentDone==100){
+                    progress.setVisibility(View.GONE);
                 }
             }
         });
     }
 
+    private void init() {
+        obj= getIntent().getParcelableExtra("obj");
+        //TextViews
+        gName=findViewById(R.id.gName);
+        relation=findViewById(R.id.relation);
+        //Image Vies
+        gNId = findViewById(R.id.nIdSPR);
+        idCardS = findViewById(R.id.idCardSPR);
 
-
-    public void viewT(View view) {
-        int pos = (int) view.getTag();
-        startActivity(new Intent(this,VerTView.class).putExtra("obj",obj.get(pos)));
-    }
-}
-
-class VerSAdapter extends RecyclerView.Adapter<VerSAdapter.MyViewHolder> {
-
-    Context context;
-    List<ParseObject> title;
-
-    public VerSAdapter(Context context, List<ParseObject> title) {
-        this.context = context;
-        this.title = title;
+        //progress bar
+        progress = findViewById(R.id.progressBarSPR);
     }
 
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View  view = inflater.inflate(R.layout.item_ver_s,parent,false);
-        MyViewHolder  holder = new MyViewHolder(view);
-        return  holder;
+    public void verifyS(View view) {
+        obj.put("verified",true);
+        obj.saveEventually();
+        int pos = getIntent().getIntExtra("pos",-1);
+        setResult(RESULT_OK,new Intent().putExtra("pos",pos));
+        finish();
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.button.setTag(position);
-        holder.textView.setText(title.get(position).getString("username"));
+    public void callP(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+obj.getString("phone")));
+        startActivity(intent);
     }
 
-    @Override
-    public int getItemCount() {
-        return title.size();
-    }
-
-
-
-    class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-        Button button;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView = itemView.findViewById(R.id.verS_username);
-            button =itemView.findViewById(R.id.verS_view);
-        }
+    public void rejectS(View view) {
+        obj.put("verFailed",true);
+        obj.saveEventually();
+        int pos = getIntent().getIntExtra("pos",-1);
+        setResult(RESULT_OK,new Intent().putExtra("pos",pos));
+        finish();
     }
 }

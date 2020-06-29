@@ -1,19 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".verificaiton.VerSView">
+    android:orientation="vertical"
+    tools:context=".verificaiton.VerS">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/gName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="160dp"
-        android:text="Verify"
-        android:onClick="verifyS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Guardian's Name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardians NID"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarSPR"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/nIdSPR"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="STUDENTS ID CARD"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+    <ImageView
+        android:id="@+id/idCardSPR"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+
+    <TextView
+        android:id="@+id/relation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relation to Student:"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Reject"
+            android:onClick="rejectS"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:onClick="callP"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:onClick="verifyS"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -288,4 +288,8 @@ public class LockedJob extends AppCompatActivity implements DatePickerDialog.OnD
         lastDate.setText(currentDateString);
         obj.put("interviewDate",c.getTime());
     }
+
+    public void saveChanges(View view) {
+        obj.saveEventually();
+    }
 }

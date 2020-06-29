@@ -27,10 +27,10 @@
         <activity android:name=".InterviewDayList" />
         <activity android:name=".LockedJob" />
         <activity android:name=".LockedJobsList" />
-        <activity android:name=".verificaiton.VerSView" />
-        <activity android:name=".verificaiton.VerTView" />
         <activity android:name=".verificaiton.VerS" />
         <activity android:name=".verificaiton.VerT" />
+        <activity android:name=".verificaiton.VerSList" />
+        <activity android:name=".verificaiton.VerTList" />
         <activity android:name=".HomePage" />
         <activity android:name=".MainActivity">
             <intent-filter>

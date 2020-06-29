@@ -1,130 +1,156 @@
 package com.example.back4appnotification.verificaiton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.back4appnotification.R;
-import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import java.util.List;
+import com.parse.ProgressCallback;
 
 public class VerT extends AppCompatActivity {
-
-    VerTAdapter customAdapter;
-    LinearLayoutManager manager;
-    RecyclerView recycle;
-    List<ParseObject> obj;
+    ParseObject obj;
+    TextView name,username,gender,currentEdu,curriculum,background,schoolName,uniName,uniProgram,address,phone;
+    ImageView proPic,nId,certificate,idCard;
+    ProgressBar progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_t);
         init();
-        query();
-    }
-    private void init() {
-        recycle = findViewById(R.id.verT_recycle);
-        manager = new LinearLayoutManager(this);
+        set();
     }
 
-    private void query() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("TeacherProfile");
-        query.whereEqualTo("verified",false);
-        query.findInBackground(new FindCallback<ParseObject>() {
+
+    private void init() {
+        obj= getIntent().getParcelableExtra("obj");
+        //TextViews
+        name=findViewById(R.id.nameTP);
+        username=findViewById(R.id.usernameTP);
+        gender=findViewById(R.id.genderTP);
+        currentEdu=findViewById(R.id.cEduTP);
+        curriculum=findViewById(R.id.curriculumTP);
+        background=findViewById(R.id.backgroundTP);
+        schoolName=findViewById(R.id.schoolNameTP);
+        uniName=findViewById(R.id.uniNameTP);
+        uniProgram=findViewById(R.id.uniProgramTP);
+        address=findViewById(R.id.addressTP);
+        phone=findViewById(R.id.phoneTP);
+        //Image Vies
+        proPic = findViewById(R.id.proPicTP);
+        nId = findViewById(R.id.nIdTP);
+        certificate=findViewById(R.id.certificateTP);
+        idCard=findViewById(R.id.idCardTP);
+        //progress bar
+        progress = findViewById(R.id.proPicBarTP);
+    }
+
+    private void set() {
+        // Text Views
+        name.setText("full Name: "+obj.getString("fullName"));
+        username.setText("username: "+obj.getString("username"));
+        gender.setText("gender: "+obj.getString("gender"));
+        currentEdu.setText("currentEducation: "+obj.getString("currentEducation"));
+        curriculum.setText("curriculum: "+obj.getString("curriculum"));
+        background.setText("background: "+obj.getString("background"));
+        schoolName.setText("schoolName: "+obj.getString("schoolName"));
+        address.setText("address: "+obj.getString("address"));
+        //Images
+        ParseFile proPicFile = obj.getParseFile("proPic");
+        proPicFile.getDataInBackground(new GetDataCallback() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if(e==null){
-                    if (objects.size()==0){
-                        Toast.makeText(VerT.this, "Nothing found", Toast.LENGTH_SHORT).show();
-                    }else{
-                        obj = objects;
-                        customAdapter = new VerTAdapter(VerT.this, objects);
-                        recycle.setAdapter(customAdapter);
-                        recycle.setLayoutManager(manager);
-                    }
-                }else{
-                    Toast.makeText(VerT.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            public void done(byte[] data, ParseException e) {
+                if (e==null){
+                    Glide.with(VerT.this)
+                            .load(data)
+                            .into(proPic);
                 }
             }
         });
-    }
 
+        ParseFile nIdFile = obj.getParseFile("document");
+        nIdFile.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if (e==null){
+                    Glide.with(VerT.this)
+                            .load(data)
+                            .into(nId);
 
+                }
+            }
+        }, new ProgressCallback() {
+            public void done(Integer percentDone) {
+                progress.setProgress(percentDone);
+                if (percentDone==100){
+                    progress.setVisibility(View.GONE);
+                }
+            }
+        });
 
-    public void viewT(View view) {
-        int pos = (int) view.getTag();
-        startActivityForResult(new Intent(this,VerTView.class).putExtra("obj",obj.get(pos)),1);
-    }
+        ParseFile certificateFile = obj.getParseFile("certificate");
+        certificateFile.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if (e==null){
+                    Glide.with(VerT.this)
+                            .load(data)
+                            .into(certificate);
+                }
+            }
+        });
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1 && resultCode==RESULT_OK){
-            int removeIndex = data.getIntExtra("pos",100);
-            obj.remove(removeIndex);
-            customAdapter.notifyItemRemoved(removeIndex);
-            customAdapter.notifyItemRangeChanged(removeIndex, obj.size());
+        if (obj.getString("university")!=null){
+            uniName.setText("university: "+obj.getString("university"));
+            uniProgram.setText("uniProgram: "+obj.getString("uniProgram"));
+
+            ParseFile idCardFile = obj.getParseFile("document");
+            idCardFile.getDataInBackground(new GetDataCallback() {
+                @Override
+                public void done(byte[] data, ParseException e) {
+                    if (e==null){
+                        Glide.with(VerT.this)
+                                .load(data)
+                                .into(idCard);
+                    }
+                }
+            });
+        }else {
+            uniName.setVisibility(View.GONE);
+            uniProgram.setVisibility(View.GONE);
+            idCard.setVisibility(View.GONE);
         }
     }
-}
 
-class VerTAdapter extends RecyclerView.Adapter<VerTAdapter.MyViewHolder> {
-
-    Context context;
-    List<ParseObject> title;
-
-    public VerTAdapter(Context context, List<ParseObject> title) {
-        this.context = context;
-        this.title = title;
+    public void verifyT(View view) {
+        obj.put("verified",true);
+        obj.saveEventually();
+        int pos = getIntent().getIntExtra("pos",-1);
+        setResult(RESULT_OK,new Intent().putExtra("pos",pos));
+        finish();
     }
 
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View  view = inflater.inflate(R.layout.item_ver_t,parent,false);
-        MyViewHolder  holder = new MyViewHolder(view);
-        return  holder;
+    public void callT(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+obj.getString("phone")));
+        startActivity(intent);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.button.setTag(position);
-        holder.textView.setText(title.get(position).getString("username"));
-    }
-
-    @Override
-    public int getItemCount() {
-        return title.size();
-    }
-
-
-
-    class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-        Button button;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView = itemView.findViewById(R.id.verT_username);
-            button =itemView.findViewById(R.id.verT_view);
-        }
+    public void rejectT(View view) {
+        obj.put("verFailed",true);
+        obj.saveEventually();
+        int pos = getIntent().getIntExtra("pos",-1);
+        setResult(RESULT_OK,new Intent().putExtra("pos",pos));
+        finish();
     }
 }
-
-
-

@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.back4appnotification.verificaiton.VerS;
-import com.example.back4appnotification.verificaiton.VerT;
+import com.example.back4appnotification.verificaiton.VerSList;
+import com.example.back4appnotification.verificaiton.VerTList;
 import com.parse.FindCallback;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
@@ -20,7 +20,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,11 +35,11 @@ public class HomePage extends AppCompatActivity implements DatePickerDialog.OnDa
 
     public void verT(View view) {
 //        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, VerT.class));
+        startActivity(new Intent(this, VerTList.class));
     }
 
     public void verS(View view) {
-        startActivity(new Intent(this, VerS.class));
+        startActivity(new Intent(this, VerSList.class));
     }
 
     public void lockedJobs(View view) {

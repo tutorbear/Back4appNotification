@@ -367,6 +367,13 @@
                 android:onClick="datePicker"
                 android:text="Date picker" />
 
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:onClick="saveChanges"/>
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
